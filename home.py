@@ -28,9 +28,9 @@ def Home_screen():
     if not df.empty:
         labels = radioButton()
         submitButton(labels)
-    check = st.button("Check")
-    if check:
-        st.switch_page("pages/check.py")
+    # check = st.button("Check")
+    # if check:
+    #     st.switch_page("pages/check.py")
 
 def logout():
     st.session_state.logged_in = False
@@ -47,8 +47,8 @@ def submitButton(labelSelection):
         return targetVariable
  
     elif labelSelection=="Automatic":
-        targetVariable = st.selectbox("Choose Target Variable",df.columns)
-        options = st.multiselect("Choose the columns you want to set as independant variable",df.columns)
+        # targetVariable = st.selectbox("Choose Target Variable",df.columns)
+        # options = st.multiselect("Choose the columns you want to set as independant variable",df.columns)
         button = st.button("Submit")
 
 
@@ -56,7 +56,7 @@ def radioButton():
 #label selection radio button
     labelSelection = st.radio(
         "Select Labels",
-        ["Automatic","Manual"],
+        ["Automatic","Manual"], 
         captions=["Completely automatic","Manually select the labels"]
     )
     return labelSelection
