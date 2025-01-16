@@ -1,9 +1,13 @@
 import streamlit as st
 import pandas as pd
+import pickle
 
 # Variables initialization
 df = pd.DataFrame()
 
+with open('best_svc_model.pkl', 'rb') as file:
+    data = pickle.load(file)
+print("Type of loaded object:", type(data))
 def Home_screen():
 # Main function
     title,space,logoutBtn = st.columns([1,1,0.25],vertical_alignment="bottom",border=False)
@@ -48,7 +52,12 @@ def submitButton(labelSelection):
  
     elif labelSelection=="Automatic":
         # targetVariable = st.selectbox("Choose Target Variable",df.columns)
-        # options = st.multiselect("Choose the columns you want to set as independant variable",df.columns)
+        options = st.multiselect(
+            "Choose the columns you want to set as independent variable",
+            df.columns,  # Available options
+            default=data,  # Preselected values
+            disabled=True
+          )  # Disable interaction
         button = st.button("Submit")
 
 
