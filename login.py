@@ -1,6 +1,7 @@
 import streamlit as st
 
 from home import Home_screen
+from signup import signup_page
 
 # Simulated user credentials (for demonstration purposes only)
 USER_CREDENTIALS = {
@@ -27,6 +28,7 @@ def login_page():
     loggingin,space,Signup = st.columns([0.25,1,0.25],vertical_alignment="bottom",gap="large")
     with loggingin: st.button("Login",on_click=login(username, password))
     with space: st.write(" ")
+    # with Signup: st.button("Signup", on_click=signup_page)
     with Signup: st.button("Signup")
 # Main App
 if st.session_state.logged_in:
